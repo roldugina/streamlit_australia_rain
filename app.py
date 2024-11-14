@@ -23,7 +23,7 @@ def predict(data):
 #    </style>
 #""", unsafe_allow_html=True)
 
-st.title('Weather Forecasting')
+st.title('Rain prediction')
 st.markdown('This application utilizes a Random Forest model to predict rainfall in Australia, leveraging 10 years of observational data')
 st.image('images/australia.jpg')
 
