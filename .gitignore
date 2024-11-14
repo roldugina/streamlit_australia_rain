@@ -6,6 +6,7 @@ streamlit_env/
 *.tmp
 __pycache__/
 *.pyc
+.ipynb_checkpoints
 
 # Ignore files created by OS
 .DS_Store
