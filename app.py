@@ -15,28 +15,36 @@ def predict(data):
     return predictions[0], max(predict_proba[0])
 
 # Customize sidebar colour
-st.markdown("""
-    <style>
-        [data-testid="stSidebar"] {
-            background-color: #B0C1D9;
-        }
-    </style>
-""", unsafe_allow_html=True)
+#st.markdown("""
+#    <style>
+#        [data-testid="stSidebar"] {
+#            background-color: #B0C1D9;
+#        }
+#    </style>
+#""", unsafe_allow_html=True)
 
 st.title('Weather Forecasting')
 st.markdown('This application utilizes a Random Forest model to predict rainfall in Australia, leveraging 10 years of observational data')
 st.image('images/australia.jpg')
 
-# Define lists for input widgets
+
 raw_df = pd.read_csv('data/weatherAUS.csv')
 location_list = raw_df['Location'].dropna().unique()
 WindGustDir_list = raw_df['WindGustDir'].dropna().unique()
 WindDir9am_list = raw_df['WindDir9am'].dropna().unique()
 WindDir3pm_list = raw_df['WindDir3pm'].dropna().unique()
+st.markdown('1. Select the location in Australia You are interested in:')
+Location = st.selectbox('Select location:', location_list)
+st.markdown(f'Historical weather data for {Location} statistics:')
+st.dataframe(raw_df[raw_df['Location']==Location].describe())
+
+# Define lists for input widgets
+
+st.markdown('2. Select the parameter values on the sidebar to predict the probability of rain for the next day.')
 
 # Define sidebar with input widgets
 with st.sidebar:
-    Location = st.selectbox('Select location:', location_list)
+    st.markdown(f'Weather parameters for selected location:')
     RainToday = st.checkbox('It rained today')
     Rainfall = st.slider('Rainfall', 0, 400, 0)
     WindGustSpeed = st.slider('Wind Gust Speed', 0, 150, 75)
@@ -59,7 +67,9 @@ with st.sidebar:
     Temp3pm = st.slider('Temperature at 3pm', -15, 50, 20)
 
 # Predict button
-if st.button("Predict the rain tomorrow"):
+st.markdown('3. Predict the probability of rain for the next day.')
+
+if st.button('Predict'):
     # Form a list with user data
     data = np.expand_dims(np.array([Location, MinTemp, MaxTemp, Rainfall, Evaporation, Sunshine,
                                     WindGustDir, WindGustSpeed, WindDir9am, WindDir3pm, WindSpeed9am, 
