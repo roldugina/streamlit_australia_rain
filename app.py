@@ -42,8 +42,7 @@ st.dataframe(raw_df[raw_df['Location']==Location].describe())
 
 # Define lists for input widgets
 
-st.markdown('2. Select the parameter values on the sidebar to predict the probability of rain for the next day.')
-
+st.markdown('2. Select the parameter values on the sidebar to predict whether it will rain the next day.')
 # Define sidebar with input widgets
 with st.sidebar:
     st.markdown(f'Weather parameters for selected location:')
@@ -71,7 +70,7 @@ with st.sidebar:
 # Predict button
 st.markdown('3. Predict whether it will rain the next day (Yes / No).')
 
-if st.button('Predict'):
+if st.button('Run prediction'):
     # Form a list with user data
     data = np.expand_dims(np.array([Location, MinTemp, MaxTemp, Rainfall, Evaporation, Sunshine,
                                     WindGustDir, WindGustSpeed, WindDir9am, WindDir3pm, WindSpeed9am, 
