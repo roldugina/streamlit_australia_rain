@@ -12,7 +12,7 @@ def predict(data):
     X, inputs = preprocess_data(inputs, model_components)
     predictions = model_components['model'].predict(X)
     predict_proba = model_components['model'].predict_proba(X)
-    return predictions[0], max(predict_proba[0])
+    return predictions[0], (predict_proba[0,1])
 
 # Customize sidebar colour
 #st.markdown("""
@@ -25,6 +25,8 @@ def predict(data):
 
 st.title('Rain prediction')
 st.markdown('This application utilizes a Random Forest model to predict rainfall in Australia, leveraging 10 years of observational data')
+url = "https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package"
+st.write("Data source: Kaggle dataset ['Rain in Australia'](%s)" % url)
 st.image('images/australia.jpg')
 
 
@@ -67,7 +69,7 @@ with st.sidebar:
     Temp3pm = st.slider('Temperature at 3pm', -15, 50, 20)
 
 # Predict button
-st.markdown('3. Predict the probability of rain for the next day.')
+st.markdown('3. Predict whether it will rain the next day (Yes / No).')
 
 if st.button('Predict'):
     # Form a list with user data
@@ -79,4 +81,4 @@ if st.button('Predict'):
     # Call predict function
     pred, pred_proba = predict(data)
     st.write(f'Result: {pred}')
-    st.write('Prediction probability = {pred_proba:.6f}'.format(pred_proba=pred_proba))
+    st.write('Rain probability = {pred_proba: .4%}'.format(pred_proba=pred_proba))
