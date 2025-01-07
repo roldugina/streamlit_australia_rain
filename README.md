@@ -14,7 +14,7 @@ You can download the dataset from Kaggle: https://www.kaggle.com/datasets/jsphyg
 
 ### Technical Aspects
 
-  Libraries: scikit-learn, streamlit  
+  Libraries: pandas, scikit-learn, streamlit, joblib
   Algorithms Used: Random Forest Classifier
   
   Output: The model predicts rainfall occurrence and provides the rain probability.
