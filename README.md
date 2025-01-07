@@ -17,6 +17,8 @@ You can download the dataset from Kaggle: https://www.kaggle.com/datasets/jsphyg
   Libraries: scikit-learn, streamlit  
   Algorithms Used: Random Forest Classifier
   
-  Output: The model predicts rainfall occurrence and provides the rain probability
+  Output: The model predicts rainfall occurrence and provides the rain probability.
+  
+  The project uses a virtual environment for dependency management.
 
   [Try deployed app](https://australia-rain.streamlit.app/)
