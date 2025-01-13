@@ -1,21 +1,23 @@
-# Building a Web Application with Streamlit for Predicting Rain in Australia Using a Random Forest Model
+# Building a Web Application with Streamlit for Predicting Rain in Australia
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://australia-rain.streamlit.app/)
 
-Predicting whether rainfall will occur in Australia, leveraging 10 years of observational data.
-The project demonstrates the machine learning process from data preprocessing to deploying model using Streamlit library.
-
 ## Project Overview
 
-### Dataset:
+This project focuses on building a web application that predicts whether rainfall will occur in a given region of Australia. The goal is to demonstrate the complete machine learning pipeline, from data preprocessing to deploying the trained model using the Streamlit library.
 
-The dataset comprises about 10 years of daily weather observations from numerous locations across Australia. 
-You can download the dataset from Kaggle: https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package
+## Dataset:
 
-### Technical Aspects
+The Kaggle dataset comprises about 10 years of daily weather observations from numerous locations across Australia. 
+You can download it here: https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package
 
-  Libraries: pandas, scikit-learn, streamlit, joblib
-  Algorithms Used: Random Forest Classifier
+## Technologies Used:
+
+   - **Python** for data processing and machine learning.
+   - **Streamlit** for web app deployment.
+   - **Scikit-learn** for building and evaluating machine learning models.
+   - **Pandas** for data manipulation.
+   - **Joblib** for saving a pre-trained model
   
   Output: The model predicts rainfall occurrence and provides the rain probability.
   
