@@ -3,16 +3,16 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-from load_and_preprocess import load_model_components, preprocess_data
+from load_and_preprocess import load_model_components, preprocess_data, preprocess_new_data
 
 # Define prediction function
 def predict(data):
-    model_components = load_model_components('models/rf_model.joblib')
+    model_components = load_model_components('models/trained_model.joblib')
     inputs = pd.DataFrame(data, columns=model_components['input_cols'])
-    X, inputs = preprocess_data(inputs, model_components)
-    predictions = model_components['model'].predict(X)
-    predict_proba = model_components['model'].predict_proba(X)
-    return predictions[0], (predict_proba[0,1])
+    X, inputs = preprocess_new_data(inputs, model_components)
+    predictions = model_components['model'].predict(X)[0]
+    predict_proba = model_components['model'].predict_proba(X)[0,1]
+    return predictions, predict_proba
 
 # Customize sidebar colour
 #st.markdown("""
@@ -24,7 +24,7 @@ def predict(data):
 #""", unsafe_allow_html=True)
 
 st.title('Rain prediction')
-st.markdown('This application utilizes a Random Forest model to predict rainfall in Australia, leveraging 10 years of observational data')
+st.markdown('This application utilizes a XGBoost model to predict rainfall in Australia, leveraging 10 years of observational data')
 url = "https://www.kaggle.com/datasets/jsphyg/weather-dataset-rattle-package"
 st.write("Data source: Kaggle dataset ['Rain in Australia'](%s)" % url)
 st.image('images/australia.jpg')
@@ -79,5 +79,6 @@ if st.button('Run prediction'):
     
     # Call predict function
     pred, pred_proba = predict(data)
-    st.write(f'Result: {pred}')
+    res = 'The model predicts no rain for tomorrow.' if pred == 0 else 'Model predicts rain for tomorrow.'
+    st.write(f'Result: {res}')
     st.write('Rain probability = {pred_proba: .4%}'.format(pred_proba=pred_proba))
