@@ -35,6 +35,8 @@ The model `XGBoost` with `Hyperopt` optimization and threshold adjustment demons
 
 These results suggest that the use of `XGBoost` with `Hyperopt` optimization and threshold adjustment significantly enhanced the model's ability to correctly classify the minority class while maintaining a good overall performance.
 
-![trained models](https://drive.google.com/file/d/1kQgYsYp6gFdJfpAsj4WPetK76qUK1aDQ/view?usp=sharing)
+A comprehensive list of trained models and their performance results:
+
+![Trained models](https://github.com/roldugina/streamlit_australia_rain/blob/2eea747444d83d9e6d4571351aa7bd22d9070c12/images/Screenshot%202025-01-28%20012030.png)
 
   [Try deployed app](https://australia-rain.streamlit.app/)
